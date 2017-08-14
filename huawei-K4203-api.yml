@@ -1,0 +1,109 @@
+common:
+    headers:
+        Host: 192.168.9.1
+        User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0
+        Accept: '*/*'
+        Accept-Language: en-US,en;q=0.5
+        Accept-Encoding: gzip, deflate
+        Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+        X-Requested-With: XMLHttpRequest
+        Connection: keep-alive
+    error-codes:
+        100002: No support
+        100003: Access denied
+        100004: Busy
+        108001: Wrong username
+        108002: Wrong password
+        108003: Already logged in
+        120001: Voice busy
+        125001: Wrong __RequestVerificationToken header
+
+sms:
+    url: /api/sms/send-sms
+    method: post
+    Referer: /html/home.htm
+    request: !!omap
+       - Index: -1
+       - Phones:
+           Phone: ''
+       - Sca: ''
+       - Content: ''
+       - Length: ''
+       - Reserved: 1
+       - Date: ''
+
+sms-count:
+    url: /api/sms/sms-count
+    method: get
+
+sms-list:
+    url: /api/sms/sms-list
+    Referer: /html/smsinbox.html?smsinbox
+    method: post
+    request: !!omap
+        - PageIndex: 1
+        - ReadCount: 20
+        - BoxType: 1
+        - SortType: 0
+        - Ascending: 0
+        - UnreadPreferred: 0
+sms-read:
+    url:  /api/sms/send-sms
+    method: post
+    request: !!omap
+        - Index: 2000
+
+sms-delete:
+    url: /api/sms/delete-sms
+    method: post
+    request: !!omap
+        - Index:
+
+information:
+    url: /api/device/information
+    method: get
+
+status:
+    url: /api/monitoring/status
+    method: get
+
+plmn:
+    url: /api/net/current-plmn
+    method: get
+
+disconnect:
+    url: /api/dialup/dial
+    method: post
+    request: !!omap
+        - Action: 0
+
+connect:
+    url: /api/dialup/dial
+    method: post
+    request: !!omap
+        - Action: 1
+
+profile:
+    url: /api/dialup/profiles
+    Referer: /html/home.htm
+    method: post
+    request: !!omap
+        - Delete: 0
+        - SetDefault: 0
+        - Modify: 2
+        - Profile:
+            Index: 1
+            IsValid: 1
+            Name: Custom
+            ApnIsStatic: 1
+            ApnName: connect
+            Username:
+            Password: 
+            AuthMode: 1
+            IpIsStatic: 0
+            IpAddress:
+            DnsIsStatic: 0
+            PrimaryDns: 
+            SecondaryDns: 
+            ReadOnly: 0
+
