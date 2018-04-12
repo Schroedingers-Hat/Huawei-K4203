@@ -24,7 +24,7 @@ class APIRequest(object):
 
 class HuaweiAPI(object):
 
-    def __init__(self, filename = '/home/pi/nn_monitor/huawei-K4203-api.yml'):
+    def __init__(self, filename = 'huawei-K4203-api.yml'):
         self.cfg_dict = yaml.load(open(filename,'r').read())
         self.common_headers = self.cfg_dict['common']['headers']
         self.error_codes = self.cfg_dict['common']['error-codes']

@@ -36,6 +36,10 @@ sms-count:
     url: /api/sms/sms-count
     method: get
 
+signal:
+    url: /api/device/signal
+    method: get
+
 sms-list:
     url: /api/sms/sms-list
     Referer: /html/smsinbox.html?smsinbox
