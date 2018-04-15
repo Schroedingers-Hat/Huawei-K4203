@@ -87,6 +87,12 @@ connect:
     request: !!omap
         - Action: 1
 
+reboot_k4203:
+    url: /api/device/control
+    method: post
+    request: !!omap
+        - Action: 1
+        
 profile:
     url: /api/dialup/profiles
     Referer: /html/home.htm
